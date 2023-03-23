@@ -16,10 +16,10 @@ print (stepen (a, n))
 
 #3
 f = 'сбербанк'
-symbol = 'ж'
+symbol = 'б'
 def puk(symbol, f):
+    count = 0
     for i in range (len(f)):
-        count = 0
         if f[i] == symbol:
             count += 1
         if count >= 2:
