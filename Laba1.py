@@ -46,18 +46,20 @@ stroka = 'вжух и ты петух'
 print (stroka[::-1])
 
 # 6
-a = [1,1,1,1]
+a = [1, 1, 1, 1]
 def odi(a):
+    count = 0
     for i in range (0, len(a)-1):
         if a[i] == a[i + 1]:
-            return True
+            count += 1
         else:
             return False
-            break
-    if len(a) == 1 or len(a) == 0:
+    if count == len(a) and len(a) != 0:
+        return True
+    elif len(a) == 0:
         return 'Недостаточно элементов в списке'
     else:
-        return a
+        return True
 print(odi(a))
 
 #7
