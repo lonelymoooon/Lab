@@ -193,7 +193,7 @@ sentence = "434 В этой 12 строке 45 всего 52 четыре 1 чи
 res = sum_of_numbers(sentence)
 print(res)
 
-SDELALA
+
 
 10.То же самое, но без явной конвертации (не используя int())
 
