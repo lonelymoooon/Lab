@@ -203,21 +203,34 @@ print(result)
 
 10.То же самое, но без явной конвертации (не используя int())
 
-def sum_of_numbers(x):  # умереть не встать, зачем нужна неявная конвертация
-    words = x.split()
-    res = 0
-    for word in words:  # до этого момента все как и в прошлом коде
-        if all(c.isdigit() for c in word):  # проверка, состоит ли текущий элемент только из чисел
-            # если да, то переводим его в числовое значение и добавляем к общей сумме
-            num = 0
-            for c in word:
-                num = num * 10 + ord(c) - ord('0')  # ord вернет для символа число из таблицы символов Unicode
+def sum_of_numbers(x):
+    result = ''
+    for i in x:
+        if i.isdigit() or i.isspace():
+            result += i
+        else:
+            continue
+
+    result = result.strip() # тут все как было в прошлой задаче
+    list = []
+    number = 0
+    for c in result:
+        if c.isdigit():
+            number = number * 10 + ord(c) - ord('0') # ord вернет для символа число из таблицы символов Unicode
                 # метод позиционной записи чисел. символ '0' (его код ASCII равен 48) вычитается из числового
                 # значения символа, чтобы получить числовое значение цифры
-                res += num
-    return res
+        elif c.isspace(): # если текущий символ является пробелом,
+        # то добавляем текущее число к списку чисел и начинаем обработку следующего 
+            if number != 0:
+                list.append(number)
+                number = 0
+        else:
+            continue
+    if number != 0: 
+        list.append(number) # добавляем ластецкое число к списку чисел (вот туть помогли)
+    return sum(list)
 
-
-sentence = "434 В этой 12 строке 45 всего 52 четыре 1 числа 93"
-print(sum_of_numbers(sentence))
-
+x = "19коров и кита3 выш33ло в поле 1"
+result = sum_of_numbers(x)
+print(result)
+# Основную суть задачи я вроде поняла и реализовала сама, но все же мне помогли с последним моментом, так шо да
