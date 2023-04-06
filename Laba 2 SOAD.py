@@ -181,18 +181,24 @@ pechat_mat(4)
 
 
 def sum_of_numbers(x):
-    words = x.split()  # разбивает строку на список слов
-    res = 0  # сюда будет записываться сумма всех чисел в строке
-    for word in words:  # пробегается по разбитому списку слов в строке
-        if word.isdigit():  # если строка - число
-            res += (int(word))  # в результат прибавляется это число
-    return res
+
+    result = '' # переменная для хранения чисел и пробелов
+    for i in x:
+        if i.isdigit() or i.isspace(): # если наш символ цифра или пробел, то добавляем
+            result += i
+        else:
+            continue
+
+    result = result.strip() # очищаем полученную строку от пробелов
+    numbers_list = [int(num) for num in result.split() if num.isdigit()] # преобразуем строку чисел в список чисел
+    numbers_sum = sum(numbers_list)
+
+    return numbers_sum
 
 
-sentence = "434 В этой 12 строке 45 всего 52 четыре 1 числа 93"
-res = sum_of_numbers(sentence)
-print(res)
-
+x = "19коров и кита3 выш33ло в поле 1"
+result = sum_of_numbers(x)
+print(result)
 
 
 10.То же самое, но без явной конвертации (не используя int())
